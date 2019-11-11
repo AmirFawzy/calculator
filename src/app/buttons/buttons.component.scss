@@ -1,0 +1,60 @@
+@import '../../partials/mixins';
+@import '../../partials/variables';
+
+$long-btn-radius: 30px;
+
+.operators-row {
+  margin-bottom: 1em;
+}
+
+.operator,
+.num {
+  @include operatorBtn($border-circle, 700);
+}
+
+.operator {
+  border-radius: 43%;
+  color: $parimary-text-color;
+}
+
+.num {
+  font-weight: 400;
+  background-color: $secondary-color;
+  border-color: $secondary-border-color;
+}
+
+.equal-and-numbers {
+  .equal-and-numbers-equal {
+    order: 1;
+    flex: 1 1 10%;
+
+    button {
+      height: 100%;
+      border-radius: $long-btn-radius;
+    }
+  }
+
+  .equal-and-numbers-numbers {
+    padding-right: 1em;
+    flex: 1 1 90%;
+
+    .row {
+      margin-bottom: .5em;
+
+      >div {
+        width: 100%;
+        padding-right: 1.5em;
+      }
+    }
+
+    .row:last-child {
+      margin-bottom: 0;
+      padding-right: 1.5em;
+
+      button {
+        width: 100%;
+        border-radius: $long-btn-radius;
+      }
+    }
+  }
+}
