@@ -1,8 +1,8 @@
 <main>
   <div class="container">
     <div class="screen">
-      <form class="screen-form" [formGroup]="calculationForm" (ngSubmit)="onSubmit()" ng->
-        <input class="screen-calculation-input" type="text" placeholder="Write here..." formControlName="clculationInput" required>
+      <form class="screen-form" [formGroup]="calculationForm" (ngSubmit)="onSubmit()">
+        <input class="screen-calculation-input" type="text" placeholder="Write here..." (keypress)="onKeypress($event)"  formControlName="calculationInput">
       </form>
       <div class="screen-output">
         <p>output test</p>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="buttons-history">
-      <app-buttons></app-buttons>
+      <app-buttons *ngIf="!showHistory" (keyName)="getKey($event)"></app-buttons>
       <app-history *ngIf="showHistory"></app-history>
     </div>
   </div>

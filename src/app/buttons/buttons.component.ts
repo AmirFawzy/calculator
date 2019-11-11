@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-buttons',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buttons.component.scss']
 })
 export class ButtonsComponent implements OnInit {
+  @Output() keyName =  new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onKeyClick(evt: MouseEvent) {
+    const keyData = (evt.target as HTMLElement).dataset.key;
+    this.keyName.emit(keyData);
+  }
 }
