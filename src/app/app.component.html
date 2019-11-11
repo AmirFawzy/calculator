@@ -7,7 +7,8 @@
       <div class="screen-output">
         <p>output test</p>
       </div>
-      <div class="screen-history-btn">
+      <div class="screen-history-btn d-flex justify-content-space-between">
+        <button type="button" (click)="onClear()">AC</button>
         <button type="button" (click)="showHistory = !showHistory">History</button>
       </div>
     </div>

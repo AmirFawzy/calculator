@@ -18,12 +18,21 @@ export class AppComponent {
   }
 
   getKey(key: string) {
-    this.calculationOperator += key;
-    this.calculationForm.patchValue({ calculationInput: this.calculationOperator });
+    if (key !== '=') {
+      this.calculationOperator += key;
+      this.calculationForm.patchValue({ calculationInput: this.calculationOperator });
+    } else {
+      this.onSubmit();
+    }
   }
 
   onSubmit() {
     console.log(this.calculationForm.value);
+  }
+
+  onClear() {
+    this.calculationForm.reset();
+    this.calculationOperator = '';
   }
 
   /*onKeypress(evt: KeyboardEvent) {
