@@ -12,7 +12,7 @@ export class AppComponent {
   calculationOperator = '';
 
   constructor() {
-    const rgex = /^(-?\d+(\.\d+)?)(\+|-|\*|\/)(\d+(\.\d+)?|\(-\d+(\.\d+)?\))$/;
+    const rgex = /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)/;
     this.calculationForm = new FormGroup({
       calculationInput: new FormControl('', Validators.pattern(rgex))
     });
