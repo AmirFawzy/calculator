@@ -12,8 +12,9 @@ export class AppComponent {
   calculationOperator = '';
 
   constructor() {
+    const rgex = /^(-?\d+(\.\d+)?)(\+|-|\*|\/)(\d+(\.\d+)?|\(-\d+(\.\d+)?\))$/;
     this.calculationForm = new FormGroup({
-      calculationInput: new FormControl('')
+      calculationInput: new FormControl('', Validators.pattern(rgex))
     });
   }
 
@@ -50,4 +51,11 @@ export class AppComponent {
 
     // }
   }*/
+
+
+  public get hasError(): boolean {
+    console.log(this.calculationForm.controls);
+    return this.calculationForm.get('calculationInput').hasError('pattern');
+  }
+
 }

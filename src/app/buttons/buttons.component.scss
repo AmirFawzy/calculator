@@ -15,12 +15,23 @@ $long-btn-radius: 30px;
 .operator {
   border-radius: 43%;
   color: $parimary-text-color;
+  transition: $primary-trans;
+
+  &:active {
+    background: #ff4949;
+  }
 }
 
 .num {
   font-weight: 400;
   background-color: $secondary-color;
   border-color: $secondary-border-color;
+  transition: $primary-trans;
+
+  &:active {
+    border: 1px solid $primary-border-color;
+    background: $primary-color;
+  }
 }
 
 .equal-and-numbers {
@@ -31,6 +42,17 @@ $long-btn-radius: 30px;
     button {
       height: 100%;
       border-radius: $long-btn-radius;
+
+      &.equal-btn {
+        background: $trinity-color;
+        color: $secondary-text-color;
+        transition: $primary-trans;
+
+        &:active {
+          background: $primary-color;
+          border: 1px solid $primary-border-color;
+        }
+      }
     }
   }
 
@@ -54,6 +76,19 @@ $long-btn-radius: 30px;
       button {
         width: 100%;
         border-radius: $long-btn-radius;
+
+        &:first-child {
+          flex: 2 1 60%;
+        }
+
+        &:last-child {
+          flex: 1 1 22%;
+        }
+      }
+
+      div {
+        padding: 0;
+        flex: 1 1 18%;
       }
     }
   }
