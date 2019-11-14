@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,18 @@ export class AppComponent {
   calculationForm: FormGroup;
   showHistory = false;
   calculationOperator = '';
+  isControlValid = false;
 
   constructor() {
     const rgex = /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)/;
     this.calculationForm = new FormGroup({
       calculationInput: new FormControl('', Validators.pattern(rgex))
+    });
+
+    this.control.valueChanges.subscribe(() => {
+      const isInputHasVal = (this.control.value as string).length ? true : false;
+      console.log(isInputHasVal);
+      this.isControlValid = !this.hasError && isInputHasVal;
     });
   }
 
@@ -53,9 +60,13 @@ export class AppComponent {
   }*/
 
 
-  public get hasError(): boolean {
-    console.log(this.calculationForm.controls);
-    return this.calculationForm.get('calculationInput').hasError('pattern');
+  get control(): AbstractControl {
+    return this.calculationForm.get('calculationInput');
+  }
+
+
+  get hasError(): boolean {
+    return this.control.hasError('pattern');
   }
 
 }

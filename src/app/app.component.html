@@ -15,7 +15,7 @@
     </div>
 
     <div class="buttons-history">
-      <app-buttons *ngIf="!showHistory" (keyName)="getKey($event)"></app-buttons>
+      <app-buttons *ngIf="!showHistory" (keyName)="getKey($event)" [isInputValid]="isControlValid"></app-buttons>
       <app-history *ngIf="showHistory"></app-history>
     </div>
   </div>

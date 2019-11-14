@@ -52,6 +52,13 @@ $long-btn-radius: 30px;
           background: $primary-color;
           border: 1px solid $primary-border-color;
         }
+
+        &:disabled {
+          opacity: .5;
+          background: #ccc;
+          border: 0;
+          color: gray;
+        }
       }
     }
   }

@@ -7,7 +7,7 @@
   </div>
   <div class="equal-and-numbers d-flex justify-content-space-between">
     <div class="equal-and-numbers-equal">
-      <button class="operator equal-btn" data-operator="=" (click)="onKeyClick($event)">=</button>
+      <button class="operator equal-btn" data-operator="=" (click)="onKeyClick($event)" [disabled]="!isInputValid">=</button>
     </div>
     <div class="equal-and-numbers-numbers">
       <div class="row d-flex">
