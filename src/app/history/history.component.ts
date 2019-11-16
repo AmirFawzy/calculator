@@ -13,6 +13,7 @@ export class HistoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.history);
     const calculatorHistory: CalculatorHistory[] = JSON.parse(localStorage.calculatorHistory);
     calculatorHistory.sort(this.sortCalculatorHistory);
     this.history = calculatorHistory;

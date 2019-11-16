@@ -34,7 +34,8 @@ export class AppComponent {
   };
 
   constructor() {
-    // const rgex = /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)/;
+    // const regex = /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)/;
+    // const regex = /^\d+(\.\d+)?$/;
     this.calculationForm = new FormGroup({
       calculationInput: new FormControl('')
     });
@@ -75,6 +76,10 @@ export class AppComponent {
 
       this.handleOperator(key);
 
+    } else if (key === 'reset') {
+
+      this.onClear();
+
     } else {
 
       if (this.calculator.watingForSecondOperand) {
@@ -89,6 +94,44 @@ export class AppComponent {
       }
 
     }
+
+  }
+
+  onKeypress(evt: KeyboardEvent) {
+    const operators = ['+', '-', '*', '/', '='];
+    const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+
+    if (operators.includes(evt.key) || digits.includes(evt.key)) {
+
+      if ((evt.key === '0') && (this.control.value.length < 2) || (evt.key === '.') && (this.control.value.length < 2)) {
+
+        this.inputVal = '';
+
+      } else if (operators.includes(evt.key)) {
+
+        this.inputVal = (this.control.value as string).substr(0, this.control.value.length - 1);
+        this.handleOperator(evt.key);
+
+      } else if (evt.key === 'reset') {
+
+        this.onClear();
+
+      } else {
+
+        if (this.calculator.watingForSecondOperand) {
+
+          this.calculator.watingForSecondOperand = false;
+          this.inputVal = evt.key;
+
+        }
+
+      }
+
+    } else {
+
+      this.inputVal = (this.control.value as string).substr(0, this.control.value.length - 1);
+
+    }
   }
 
   onSubmit() {
@@ -101,8 +144,13 @@ export class AppComponent {
    * @memberof AppComponent
    */
   onClear() {
-    this.calculationForm.reset();
-    this.result = null;
+    this.control.reset();
+    this.calculator = {
+      firstOpt: null,
+      operator: null,
+      watingForSecondOperand: false,
+    };
+    this.inputVal = '';
   }
 
   /**
@@ -126,6 +174,12 @@ export class AppComponent {
    * Set `this.calcultor.watingForSecondOperand` to [true] and set the operator in `this.calculator`
    */
   private handleOperator(operator: string) {
+
+    if (this.calculator.operator && this.calculator.watingForSecondOperand) {
+      this.calculator.operator = operator;
+      return;
+    }
+
     if (this.calculator.firstOpt === null) {
 
       this.calculator.firstOpt = this.control.value;

@@ -1,4 +1,4 @@
-<ul>
+<ul *ngIf="history.length; else noHistory">
   <li *ngFor="let calculation of history">
     <small>{{ calculation.date | date:'medium' }}</small>
     <p>
@@ -7,3 +7,7 @@
     </p>
   </li>
 </ul>
+
+<ng-template #noHistory>
+  <p class="no-history">No history exist.</p>
+</ng-template>

@@ -9,7 +9,7 @@
       </div>
 
       <form class="screen-form" [formGroup]="calculationForm" (ngSubmit)="onSubmit()">
-        <input class="screen-calculation-input" type="text" placeholder="0" formControlName="calculationInput">
+        <input class="screen-calculation-input" type="text" placeholder="0" (keyup)="onKeypress($event)" formControlName="calculationInput">
       </form>
 
       
