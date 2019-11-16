@@ -13,8 +13,12 @@
       </form>
 
       
-      <div class="screen-history-ac-btns d-flex justify-content-space-between">
-        <button type="button" (click)="showHistory = !showHistory">History</button>
+      <div class="screen-history-btns d-flex justify-content-space-between">
+        <button type="button" (click)="showHistory = !showHistory">
+          <span [ngClass]="{ 'history-active': showHistory }"></span>
+          <span [ngClass]="{ 'history-active': showHistory }"></span>
+          <span [ngClass]="{ 'history-active': showHistory }"></span>
+        </button>
       </div>
 
     </div>

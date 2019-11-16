@@ -92,7 +92,7 @@ export class AppComponent {
   }
 
   onSubmit() {
-    console.log(this.calculationForm.value);
+    return;
   }
 
   /**

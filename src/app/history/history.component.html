@@ -1,6 +1,9 @@
 <ul>
   <li *ngFor="let calculation of history">
-    <!-- <small>{{  }}</small> -->
-    {{ calculation.calculationData.firstOpt + calculation.calculationData.operator + calculation.calculationData.secondOpt }} = {{ calculation.calculationData.result }}
+    <small>{{ calculation.date | date:'medium' }}</small>
+    <p>
+      {{ calculation.calculationData.firstOpt + ' ' +  calculation.calculationData.operator + ' ' + calculation.calculationData.secondOpt }}
+      = <span>{{ ' ' + calculation.calculationData.result }}</span>
+    </p>
   </li>
 </ul>

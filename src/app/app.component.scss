@@ -16,8 +16,8 @@ main {
   background: #f7f7f7;
 
   .screen {
-    padding-bottom: 1em;
-    border-bottom: 1px solid #fbfb;
+    padding-bottom: .5em;
+    border-bottom: 1px solid $primary-border-color;
     margin-bottom: 1em;
 
     .screen-calculation-input {
@@ -36,11 +36,32 @@ main {
       margin: .5em 0 .8em;
     }
 
-    .screen-history-ac-btns {
+    .screen-history-btns {
       margin-top: 0.5em;
 
       button {
-        border-radius: 3px;
+        background: transparent;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        padding: .5em;
+        cursor: pointer;
+
+        span {
+          width: 16px;
+          height: 1px;
+          background: $secondary-text-color;
+          display: inline-block;
+          margin-bottom: .2em;
+
+          &:nth-child(2) {
+            width: 12px;
+          }
+
+          &.history-active {
+            background: $tirnary-color;
+          }
+        }
       }
     }
   }

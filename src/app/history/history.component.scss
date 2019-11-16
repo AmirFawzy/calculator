@@ -1,0 +1,31 @@
+@import '../../partials/variables';
+
+ul {
+  list-style: none;
+  max-height: 350px;
+  overflow-y: auto;
+
+  li {
+    margin: .5em 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1em;
+
+    small {
+      font-size: 12px;
+      text-align: right;
+      display: block;
+      color: #717171;
+      margin-bottom: .2em;
+      padding-right: .5em;
+    }
+
+    span {
+      color: $secondary-color;
+    }
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+}
