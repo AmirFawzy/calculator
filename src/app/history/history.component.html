@@ -1,1 +1,6 @@
-<p>history works!</p>
+<ul>
+  <li *ngFor="let calculation of history">
+    <!-- <small>{{  }}</small> -->
+    {{ calculation.calculationData.firstOpt + calculation.calculationData.operator + calculation.calculationData.secondOpt }} = {{ calculation.calculationData.result }}
+  </li>
+</ul>

@@ -1,22 +1,29 @@
 <main>
+
   <div class="container">
+
     <div class="screen">
-      <form class="screen-form" [formGroup]="calculationForm" (ngSubmit)="onSubmit()">
-        <input class="screen-calculation-input" type="text" placeholder="Write here..." formControlName="calculationInput" pattern="([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)">
-      </form>
-      <div *ngIf="hasError">it's unvalid input.</div>
-      <div class="screen-output">
-        <p>output test</p>
+
+      <div class="screen-math-operation" *ngIf="mathematicalOperation">
+        <p>{{ mathematicalOperation }}</p>
       </div>
+
+      <form class="screen-form" [formGroup]="calculationForm" (ngSubmit)="onSubmit()">
+        <input class="screen-calculation-input" type="text" placeholder="0" formControlName="calculationInput">
+      </form>
+
+      
       <div class="screen-history-ac-btns d-flex justify-content-space-between">
         <button type="button" (click)="showHistory = !showHistory">History</button>
-        <button type="button" (click)="onClear()">AC</button>
       </div>
+
     </div>
 
     <div class="buttons-history">
-      <app-buttons *ngIf="!showHistory" (keyName)="getKey($event)" [isInputValid]="isControlValid"></app-buttons>
+      <app-buttons *ngIf="!showHistory" (keyName)="getKey($event)"></app-buttons>
       <app-history *ngIf="showHistory"></app-history>
     </div>
+
   </div>
+  
 </main>

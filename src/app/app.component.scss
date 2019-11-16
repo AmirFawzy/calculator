@@ -11,9 +11,9 @@ main {
 .container {
   width: 400px;
   border-radius: 6px;
-  padding: 1em 1em .5em;
-  border: 1px solid #fbfb;
+  padding: 1em;
   box-shadow: 0 6px 12px rgba(0,0,0,.2);
+  background: #f7f7f7;
 
   .screen {
     padding-bottom: 1em;
@@ -26,27 +26,21 @@ main {
       border: none;
       padding: .2em .5em;
       color: #111;
-      font-size: 20px;
+      font-size: 28px;
+      background: transparent;
+      direction: rtl;
     }
 
-    .screen-output {
+    .screen-math-operation {
       padding: 0 .5em;
       margin: .5em 0 .8em;
     }
 
     .screen-history-ac-btns {
-      button {
-        background: $primary-color;
-        border: 1px solid $primary-border-color;
-        padding: .5em 1em;
-        border-radius: 3px;
-        color: $parimary-text-color;
-        border-radius: 26px;
-        transition: $primary-trans;
+      margin-top: 0.5em;
 
-        &:active {
-          background: $trinity-color;
-        }
+      button {
+        border-radius: 3px;
       }
     }
   }

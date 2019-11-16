@@ -1,5 +1,5 @@
-@import '../../partials/mixins';
 @import '../../partials/variables';
+@import '../../partials/mixins';
 
 $long-btn-radius: 30px;
 
@@ -10,27 +10,33 @@ $long-btn-radius: 30px;
 .operator,
 .num {
   @include operatorBtn($border-circle, 700);
+
+  &:active {
+    background: rgba($primary-color, .5);
+    box-shadow: none !important;
+  }
 }
 
 .operator {
   border-radius: 43%;
   color: $parimary-text-color;
   transition: $primary-trans;
-
-  &:active {
-    background: #ff4949;
-  }
 }
 
 .num {
   font-weight: 400;
-  background-color: $secondary-color;
-  border-color: $secondary-border-color;
+  border: none;
   transition: $primary-trans;
 
-  &:active {
-    border: 1px solid $primary-border-color;
-    background: $primary-color;
+  &[data-key="reset"] {
+    background: $secondary-color;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 2px 4px $secondary-color !important;
+
+    &:active {
+      background: rgba($secondary-color, .5);
+    }
   }
 }
 
@@ -44,13 +50,13 @@ $long-btn-radius: 30px;
       border-radius: $long-btn-radius;
 
       &.equal-btn {
-        background: $trinity-color;
+        background: $tirnary-color;
         color: $secondary-text-color;
+        box-shadow: 0 2px 4px rgba($tirnary-color, .7) !important;
         transition: $primary-trans;
 
         &:active {
-          background: $primary-color;
-          border: 1px solid $primary-border-color;
+          background: rgba($tirnary-color, .5);
         }
 
         &:disabled {
@@ -79,24 +85,6 @@ $long-btn-radius: 30px;
     .row:last-child {
       margin-bottom: 0;
       padding-right: 1.5em;
-
-      button {
-        width: 100%;
-        border-radius: $long-btn-radius;
-
-        &:first-child {
-          flex: 2 1 60%;
-        }
-
-        &:last-child {
-          flex: 1 1 22%;
-        }
-      }
-
-      div {
-        padding: 0;
-        flex: 1 1 18%;
-      }
     }
   }
 }

@@ -7,12 +7,10 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
   @Output() keyName =  new EventEmitter<string>();
-  @Input() isInputValid: boolean;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.isInputValid);
   }
 
   onKeyClick(evt: MouseEvent) {
